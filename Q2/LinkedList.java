@@ -54,15 +54,22 @@ public class LinkedList <E> implements List <E> {
 
     public Iterator <E> itorator(int nexIndex){
       try{
-        this.nextIndex();//probaby does not work
+        this.nextIndex();
       }catch (IndexOutOfBoundsException someName) {
         return null;
       }
       LinkedListIterator temp=new LinkedListIterator();
-    //set pointer to the one beofre nextIndex
-      return null;//should not be null
+      this.pointer = nexIndex;
+      return this;
     }
 
+    //new Iterator
+    public Iterator <E> iterator(Iterator <E> other){
+      Node <E> current;
+      int pointer;
+      pointer = other.pointer;//TODO this is not done
+      current=other.current;//TODO this is not done
+    }
   }
 
   public Iterator <E> iterator () {
