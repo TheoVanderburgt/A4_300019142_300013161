@@ -76,59 +76,72 @@ public class BinarySearchTree<E extends Comparable<E>> {
   //Create method add
   public int count(E low, E high){
     int counter=0;
-    int test;
     Node<E> current =root;
-    boolean foundLow= false;
-    return count(counter,low,high,current,foundLow);
-//private helper case
+    return count(counter,low,high,current);
   }
+  //private helper case
+  /*
   private int count(int counter,E low, E high,Node<E> current, boolean foundLow){
-    if (foundLow==false){ //this finds lowest element
-      if (current.value==low){
-        counter++;
-        current=root;
-        return count(counter,low,high,current,true);//current.root does not exsist
-      }else if (low.compareTo(current.left.value)>0){
-        return count(counter,low,high,current.left,false);
-      }else{
-        return count(counter,low,high,current.right,false);
-      }
+  if (foundLow==false){ //this finds lowest element
+  if (current.value==low){
+  counter++;
+  current=root;
+  return count(counter,low,high,current,true);//current.root does not exsist
+}else if (low.compareTo(current.left.value)>0){
+return count(counter,low,high,current.left,false);
+}else{
+return count(counter,low,high,current.right,false);
+}
+}
+
+if (low.compareTo(current.left.value)>0  &&  high.compareTo(current.left.value)<0){
+counter++;
+if (current.right.value==null){
+current=root;
+}
+return count(counter,low,high,current.left,true);
+}
+if (low.compareTo(current.right.value)>0  &&  high.compareTo(current.right.value)<0){
+counter++;
+if (current.right.value==null){
+current=root;
+}
+return count(counter,low,high,current.right,true);
+}
+if (current.value==high){
+return counter++;
+}
+return counter;
+}
+*/
+private int count(int counter, E low, E high,Node<E> current){
+  if (current != null){
+    counter += count(counter,low,high,current.left);
+    counter += count(counter,low,high,current.right);
+
+    //System.out.println(current.value);
+    //System.out.println(counter);
+    if (low.compareTo(current.value)>0 && high.compareTo(current.value)>0){
+
+      return counter+1;
     }
 
-    if (low.compareTo(current.left.value)>0  &&  high.compareTo(current.left.value)<0){
-      counter++;
-      if (current.right.value==null){
-        current=root;
-      }
-      return count(counter,low,high,current.left,true);
-    }
-    if (low.compareTo(current.right.value)>0  &&  high.compareTo(current.right.value)<0){
-      counter++;
-      if (current.right.value==null){
-        current=root;
-      }
-      return count(counter,low,high,current.right,true);
-    }
-    if (current.value==high){
-      return counter++;
-    }
-    return counter;
+  }
+  return counter;
+}
+
+
+public String toString() {
+  return toString(root);
+}
+
+private String toString(Node<E> current) {
+
+  if (current == null) {
+    return "()";
   }
 
-
-
-
-  public String toString() {
-    return toString(root);
-  }
-
-  private String toString(Node<E> current) {
-
-    if (current == null) {
-      return "()";
-    }
-
-    return "(" + toString(current.left) + current.value + toString(current.right) + ")";
-  }
+  return "(" + toString(current.left) + current.value + toString(current.right) + ")";
+}
 
 }
