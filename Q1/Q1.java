@@ -53,15 +53,17 @@ public class Q1 {
 
     public static void main(String[] args) {
 
-        /*
+        StudentInfo.display();
+
+ /*       
         ITIStringBuffer marco = new ITIStringBuffer();
         marco.append("Marco");
         marco.append(" Polo");
         System.out.println(marco);
         marco.append(" walks into a bar...");
         System.out.println(marco.toString());
-        */
-
+ */      
+		 
         System.out.println("First round");
         oneRound();
 
@@ -70,5 +72,6 @@ public class Q1 {
 
         System.out.println("Third round");
         oneRound();
+
     }
 }
