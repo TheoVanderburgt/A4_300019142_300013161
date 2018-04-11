@@ -64,18 +64,17 @@ public class LinkedList <E> implements List <E> {
     }
 
     //new Iterator
-    public Iterator <E> iterator(Iterator <E> other){
-      Node <E> current;
-      int pointer;
-      pointer = other.pointer;//TODO this is not done
-      current=other.current;//TODO this is not done
-    }
-  }
 
+
+  }
   public Iterator <E> iterator () {
     return new LinkedListIterator ();
   }
 
+  public Iterator <E> iterator(Iterator <E> other){
+    Iterator <E> temp=iterator ();
+    return temp;
+  }
 
   public int size () {
     return size;
